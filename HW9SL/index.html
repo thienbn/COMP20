@@ -1,1 +1,110 @@
-f
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Setlist</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    </head>
+    <body>
+        <script>
+            
+            function filterSongs(songlist){
+                var numSongs = songlist.length
+                var genre = document.getElementById("genre").value
+                var x = ""
+                for (var i = 0; i < numSongs; i++){
+                    if ((songlist[i]['genres'].indexOf(genre)) > -1){
+                        x += allSongs(songlist[i])
+                    }
+                }
+                document.getElementById("filtered").innerHTML = x
+                document.getElementById("filtered").style.display = "block"
+                document.getElementById("mylist").style.display = "none"
+            }
+        </script>
+   
+        <script>
+            function allSongs(setlist){
+                var artist = setlist['artist']
+                var title = setlist['title']
+                var genres = setlist['genres']
+                var year = setlist['year']
+                genreLength = genres.length
+                var allGenres = "Genres: "
+                for (var i = 0; i < genreLength; i++){
+                    if (i != genreLength - 1){
+                        allGenres += (genres[i] + ", ")
+                    }
+                    else {
+                        allGenres += genres[i]
+                    }
+                }
+
+                var text = title + "</br> Artist: " + artist + "<br/>" + allGenres + "<br/> Released on: " + year
+                return text 
+            }
+            
+            function displayData(data, id){
+                var x = ""
+                for (var i = 0; i < 10; i++){
+                    x += allSongs(data[i])
+                }
+
+                document.getElementById(id).innerHTML = totalhtml
+            }
+        </script>
+        
+        <h1>
+            raw string: <br/>
+            <p style = "font-size: 12px;" id = "rawstring"></p>
+        </h1>
+        <h1>
+            setlist <br/>
+            <div id = "mylist"></div>
+        </h1>
+        <div id = "filtered" style="display: none;">
+
+        </div>
+        
+        <form id = "form">
+            <label for="genre" style="font-size: 18px;">select your genre</label><br>
+            <select id="genre" name="genre">
+                <option value="Alternative">alternative</option>
+                <option value="Hip Hop">hip hop</option>
+                <option value="Rap">rap</option>
+                <option value="R&B">R&amp;B</option>
+                <option value="Pop">pop</option>
+                <option value="Indie">indie</option>
+                <option value="Soul">soul</option>
+              </select>
+            <input type="button" value="search">
+        </form >
+        
+        <script>
+            var rdata = new XMLHttpRequest()
+            rdata.onreadystatechange = function () {
+                if (rdata.readyState == 4 && rdata.status == 200) {
+                        var rawdata = JSON.parse(rdata.responseText)
+                        
+                        document.getElementById("rawstring").innerHTML = JSON.stringify(rawdata)
+
+                        var entireList = rawdata['setlist']['songs']
+                        displayData(entireList, "mylist")
+
+                        document.getElementById("form").addEventListener('click', function (){
+                            filterSongs(entireList)
+                        })
+                    else {
+                        console.log("uh oh. something went wrong")
+                    }
+                }
+                else {
+                    console.log("uh oh. something went wrong")
+                }
+            }
+            rdata.open('GET', '/setlist.json')
+            rdata.send()
+        </script>
+    </body>
+</html>
