@@ -1,0 +1,69 @@
+{
+    "setlist" : {
+
+        "songs" : [
+            {
+                "artist" : "The 1975",
+                "title"  : "Tonight (I Wish I Was Your Boy)",
+                "genres" : ["Alternative", "Indie"],
+                "year"   : "2020"
+
+            },
+            {
+                "artist" : "Mac Miller",
+                "title"  : "Ladders",
+                "genres" : ["Hip Hop", "Rap"],
+                "year"   : "2018"
+
+            },
+            {
+                "artist" : "Frank Ocean",
+                "title"  : "Forrest Gump",
+                "genres" : ["Pop", "R&B"],
+                "year"   : "2012"
+            },
+            {
+                "artist" : "Teej",
+                "title"  : "Bye",
+                "genres" : ["Pop"],
+                "year"   : "2019"
+            },
+            {
+                "artist" : "Devin Kennedy",
+                "title"  : "No Worries",
+                "genres" : ["Pop"],
+                "year"   : "2019"
+            },
+            {
+                "artist" : "Masakoi",
+                "title"  : "Moon",
+                "genres" : ["R&B", "Soul"],
+                "year"   : "2019"
+            },
+            {
+                "artist" : "Marc Wavy",
+                "title"  : "White Dress",
+                "genres" : ["R&B", "Soul"],
+                "year"   : "2019"
+            },
+            {
+                "artist" : "Jonah Hanom",
+                "title"  : "City Girl",
+                "genres" : ["R&B", "Soul"],
+                "year"   : "2020"
+            },
+            {
+                "artist" : "Sectiontoo",
+                "title"  : "Trophies",
+                "genres" : ["R&B", "Soul"],
+                "year"   : "2019"
+            },
+            {
+                "artist" : "Anderson .Paak",
+                "title"  : "Heart Don't Stand A Chance",
+                "genres" : ["R&B", "Soul"],
+                "year"   : "2016"
+            }
+        ]
+    }
+}
