@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+	<title>Quote</title>
+    <link rel="stylesheet" href="main.css">
+
+<meta charset="utf-8"/>
+	<script>
+		function getQuote() {
+			var request = new XMLHttpRequest();
+            request.withCredentials = true;
+            
+            request.open("GET", "https://quotes15.p.rapidapi.com/quotes/random/");
+            request.setRequestHeader("x-rapidapi-key", "ab9e5fe0cdmsh16c4c1ec11f8acbp1ac60bjsn827a0185b7ee");
+            request.setRequestHeader("x-rapidapi-host", "quotes15.p.rapidapi.com");
+            
+			request.onreadystatechange = function() { 
+				if (request.readyState === 4 && request.status == 200) {                
+					var object = JSON.parse(request.responseText);
+					var quote = object["content"]
+                    
+					document.getElementById("results").innerHTML = quote
+
+				} else if (request.readyState === 4 && request.status == 200) {
+                    console.log("uh oh. something is wrong!");
+                }
+		    }   
+            
+            request.send();
+        }
+        getQuote();
+        
+	</script>
+    
+</head>
+
+<body>
+	<h1>Random Quote Generator</h1>
+	<div id="results" style="white-space: pre-wrap; margin-top: 2em">
+    </div>
+    
+</body>
+</html>
