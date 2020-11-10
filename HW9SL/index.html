@@ -12,13 +12,13 @@
             function filterSongs(songlist){
                 var numSongs = songlist.length
                 var genre = document.getElementById("genre").value
-                var x = ""
+                var mysongs = ""
                 for (var i = 0; i < numSongs; i++){
                     if ((songlist[i]['genres'].indexOf(genre)) > -1){
-                        x += allSongs(songlist[i])
+                        mysongs += allSongs(songlist[i])
                     }
                 }
-                document.getElementById("filtered").innerHTML = x
+                document.getElementById("filtered").innerHTML = mysongs
                 document.getElementById("filtered").style.display = "block"
                 document.getElementById("mylist").style.display = "none"
             }
